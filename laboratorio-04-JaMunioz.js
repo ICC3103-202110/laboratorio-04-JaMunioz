@@ -1,3 +1,19 @@
+function  app(value){
+    let prompt = require('prompt-sync')();
+    let counter = value;
+    
+    while (true){
+        const currentView = view(counter);
+        console.clear();
+        console.log(currentView);
+        msg = prompt('What  would you do? ');
+        counter = update(msg, counter);
+        if (counter == 's'){
+            break;
+        }
+    }   
+}
+
 function view(counter){
     return (`        Count: ${counter}\n                         \n`
     +`        (+) (-)          \n                         \n`
@@ -16,23 +32,14 @@ function update(msg, counter){
             return counter;
         }   
         else{
-            return counter;  
+            if (msg == 'q') {
+                return 's';           
+            } 
+            else{
+                return counter;
+            } 
         }
     }
 }
 
-//input
-let prompt = require('prompt-sync')();
-
-let counter = 0;
-let msg;
-
-while (true){
-    process.stdout.write('\033c');
-    console.log(view(counter));
-    msg = prompt('What  would you do? ');
-    counter = update(msg, counter);
-    if (counter == 2){ 
-        break;
-    }
-}
+app(0);
