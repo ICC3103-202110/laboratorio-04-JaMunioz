@@ -6,11 +6,11 @@ function  app(value){
         const currentView = view(counter);
         console.clear();
         console.log(currentView);
-        msg = prompt('What  would you do? ');
-        counter = update(msg, counter);
-        if (counter == 's'){
+        const msg = prompt('What would you do? ');
+        if (msg == 'q'){
             break;
         }
+        counter = update(msg, counter);
     }   
 }
 
@@ -30,15 +30,10 @@ function update(msg, counter){
         if (msg == '-') {
             counter -= 1;
             return counter;
-        }   
-        else{
-            if (msg == 'q') {
-                return 's';           
-            } 
-            else{
-                return counter;
-            } 
         }
+        else{
+            return counter;
+        }   
     }
 }
 
